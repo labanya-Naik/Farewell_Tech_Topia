@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .start-btn{
+      animation-name: btnanimation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  .btn {
+    animation-name: btnanimation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes btnanimation {
+    0% {
+      background-color: #ef5050;
+    }
+    25% {
+      background-color: #000000;
+    }
+    50% {
+      background-color: yellow;
+    }
+    75% {
+      background-color: #ef5050;
+    }
+    100% {
+      background-color: green;
+    }
+  }
+
+  
+  
+
+  body {
+    background-image:url(cover2.jpg);
+    margin: 0;
+    font-family: 'Nobile', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .front-page,
+  .birthday-card-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .front-page {
+background: url('cover.jpg') no-repeat center center;
+background-size: cover;
+width: 100%;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 5vw;
+text-align: center;
+}
+
+.front-page h1 {
+font-size: clamp(1.5rem, 5vw, 3rem);
+color: #ef5050;
+margin-bottom: 2rem;
+word-wrap: break-word;
+}
+
+.front-page .start-btn {
+padding: 1rem 2rem;
+font-size: clamp(1rem, 2.5vw, 1.5rem);
+background-color: #ef5050;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+  .front-page .start-btn:hover {
+    background-color: #d44141;
+  }
+
+  .birthday-card {
+    position: relative;
+    width: 90%;
+    max-width: 350px;
+    aspect-ratio: 3 / 4;
+    border: 10px solid #ef5050;
+    background-image: url("card.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: inset 10px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .cover-outer,
+  .cover-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 10px solid #ef5050;
+    transition: all 0.8s ease-in-out;
+    transform-style: preserve-3d;
+    transform-origin: 0% 50%;
+    overflow: hidden;
+  }
+
+  .cover-outer {
+    backface-visibility: hidden;
+    transform: perspective(800px) rotateY(0deg);
+    z-index: 3;
+  }
+
+  .cover-inner {
+    backface-visibility: visible;
+    background-color: #ef5050;
+    transform: perspective(800px) rotateY(0deg);
+    z-index: 1;
+  }
+
+  .cover-inner img {
+    transform: rotateY(170deg);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cover-outer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.22);
+    border-radius: 5px;
+  }
+
+  .birthday-card.open .cover-outer {
+    transform: perspective(800px) rotateY(-170deg);
+  }
+
+  .birthday-card.open .cover-inner {
+    transform: perspective(800px) rotateY(-170deg);
+    box-shadow: 7px 0 5px rgba(0, 0, 0, 0.3), inset 2px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .text {
+    position: relative;
+    z-index: 0;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+    color: #331717;
+  }
+
+  .text .title {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+  }
+
+  .text p {
+    font-size: 1em;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffffcc;
+    color: #ef5050;
+    padding: 10px 20px;
+    border: 2px solid #ef5050;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 4;
+    animation-name: btnanimation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .btn:hover {
+    background-color: #ef5050;
+    color: white;
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 600px) {
+    .text .title {
+      font-size: 1.3em;
+    }
+
+    .text p {
+      font-size: 0.9em;
+    }
+
+    .btn {
+      font-size: 0.9em;
+      padding: 8px 16px;
+    }
+  }
+
+  .balloons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 60px;
+    background: rgb(244, 9, 5);
+    border-radius: 50% 50% 50% 50%;
+    animation: floatUp 5s ease-in-out infinite;
+    left: calc(20% * var(--i));
+    animation-delay: calc(0.3s * var(--i));
+    opacity: 0;
+    transform: translateY(0);
+    left: calc(20% * var(--i) + 5%);
+    animation-delay: calc(0.3s * var(--i));
+  }
+
+  .balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #6c6f6d;
+    transform: translateX(-50%);
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-110vh);
+      opacity: 0;
+    }
+  }
+
+
+
+
+  @media (max-width: 480px) {
+.front-page {
+  padding: 8vw 4vw;
+}
+
+.front-page h1 {
+  font-size: 1.8rem;
+}
+
+.front-page .start-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+}
+}
